@@ -76,11 +76,12 @@ class Snake(object):
         self.dead = True
 
     def draw(self, surface):
+        hc = (40,50,100)
         for i in range(len(self.body)):
             p = self.body[i]
             pos = (p[0] * SIZE, p[1] * SIZE)
             r = pygame.Rect(pos, (SIZE, SIZE))
-            pygame.draw.rect(surface, self.get_color(i), r)
+            pygame.draw.rect(surface, hc, r)
 
     def handle_keypress(self, k):
         if k == pygame.K_UP:
@@ -157,19 +158,7 @@ def main():
     score = 0
         
     snake.wait_for_key()
-    #white = (255, 255, 255) 
-    #green = (0, 255, 0) 
-    #blue = (0, 0, 128)  
-    #X = 40
-    #Y = 40
-    #display_surface = pygame.display.set_mode((X, Y )) 
-    #pygame.display.set_caption('Show Text') 
-    #font = pygame.font.Font('freesansbold.ttf', 32) 
-    #text = font.render('Score: %d' % score, True, green, blue) 
-    #textRect = text.get_rect()  
-    #textRect.center = (X // 2, Y // 2) 
   
-
     while True:
         #Implements Feature 9
         length = len(snake.get_body())
@@ -188,9 +177,9 @@ def main():
         screen.blit(surface, (0,0))
 
         # TODO: see section 8, "Display the Score"
-        
-        #display_surface.fill(white) 
-        #display_surface.blit(text, textRect)
+        font = pygame.font.SysFont('Georgia', 30)
+        text = font.render('Score: %d' % score, False, (0,0,0))
+        screen.blit(text, (5,5))
 
         pygame.display.update()
         if snake.dead:
