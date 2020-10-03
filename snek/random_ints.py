@@ -1,12 +1,14 @@
 import random
 
 def random_ints():
+    # Your code here!
     l = []
-    i = 0
-    while (i != 6):
-        i = random.randint(1, 10)
+    i = (int) (random.random()*10
+    while i != 6:
         l.append(i)
-    return l
+        i = (int) (random.random()*10
+    else:
+        return l
 
 def test():
     N = 10000
