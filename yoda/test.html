@@ -8,13 +8,19 @@
     <script>
         console.log("You found me!");
         function square(i) {
-            // Your code here!
-            return 0
+            if (typeof i == "number")
+                return i * i;
+            return -1;
         }
 
         function numberString(i) {
-            // Your code here!
-            return ""
+            if (!Number.isInteger(i) || i < 1)
+                return "Enter a whole number pls!";
+            var str = "";
+            for (n = 1; n <= i; n++){
+                str += String(n%10)
+            }
+            return str;
         }
     </script>
 </body>
