@@ -22,4 +22,52 @@ let std_quotes = ["Patience you must have, my young padawan.",
 function respond() {
     // Your Code Here
     console.log("Hello World!");
+    var txtbxtxt = document.getElementById("myInput").value;
+    console.log(txtbxtxt);
+
+    var isbaby;
+    var pic = "img/";
+    var qtype = "std";
+
+    if (txtbxtxt.includes("cute") || txtbxtxt.includes("baby")){
+    	isbaby = true;
+    	pic += names[0] + "-";
+    }else{
+    	isbaby = false;
+    	pic += names[1] + "-";
+    }
+
+    if (txtbxtxt.includes("force") && txtbxtxt.includes("dark")){
+    	qtype = moods[0];
+    	pic += qtype + ".jpg";
+    }else if (txtbxtxt.includes("force")){
+    	qtype = moods[1];
+    	pic += qtype + ".jpg";
+    }else{
+    	qtype = moods[2];
+    	pic += qtype + ".jpg";;
+    }
+
+   	document.getElementById("pic").setAttribute("src", pic);
+    document.getElementById("response").innerHTML = getRandomResponse(isbaby, qtype);
+    document.getElementById("myInput").value = "";
+
+}
+
+function getRandomResponse(isbaby, qtype){
+	var res;
+	if (isbaby == true){
+		m = "m";
+		res = "h" + m.repeat(Math.floor((Math.random() * 20) + 1));
+	}else{
+		var index = Math.floor((Math.random() * 5));
+		if (qtype == moods[0]){
+			res = dark_quotes[index];
+		}else if (qtype == moods[1]){
+			res = force_quotes[index];
+		}else{
+			res = std_quotes[index];
+		}
+	}
+	return res;
 }
